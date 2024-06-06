@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
   };
   outputs = { self, nixpkgs, flake-utils }:
@@ -17,7 +17,7 @@
           version = "n/a";
           src = ./.;
           nativeBuildInputs = with pkgs.ocamlPackages; [ menhir ];
-          buildInputs = with pkgs.ocamlPackages; [ ];
+          buildInputs = with pkgs.ocamlPackages; [ cmdliner ];
         };
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
