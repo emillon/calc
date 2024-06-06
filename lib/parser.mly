@@ -3,6 +3,8 @@
 %token Plus
 %start<Ast.exp> main;
 
+%left Plus
+
 %{ open Ast %}
 
 %%
