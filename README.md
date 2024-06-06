@@ -33,3 +33,32 @@ The project's sources organization is flat, everything is in the root folder.
 * `flake.nix` and `flake.lock` Nix flake set-up
 
 Next, go `git cherry-pick task-1`
+
+## Task #1: Split and Test
+
+* Create folders `bin`, `lib` and `test`, for binary, library, and tests,
+  respectively.
+* Move relevant files into `lib`. Create a file `lib/dune`. Copy relevant rules
+  from `dune` into `lib/dune`. Specify this folder exports a module named `Calc`
+  with `cmdliner` as a dependency.
+* Copy the file `calc.ml` into `lib/cli.ml`. Refactor the new file such that:
+  - The top-level loop is turned into a function `repl : unit -> unit`
+  - It defines the following values:
+    * `info : Cmdliner.Cmd.info` command line name `calc`
+    * `term : Cmdlner.Term.t` declares two command line behaviors:
+      - without any parameter, the read-eval-print loop is executed
+      - with `-e <expr>` parameter `<expr>` is parsed, evaluated and its value
+        is returned
+    * `cmd : Cmdliner.Cmd.t` binds `info` and `term` together
+  - It defines a function `main : unit -> unit` which triggers the execution of
+    the command
+* Move `calc.ml` into `bin`. Turn that file into a single function call to the
+  `main` function defined in file `cli.ml`. Create file `bin/dune`. Specify this
+  folder exports an executable named `calc` using module `Calc`.
+* Create a file `test/dune`. Specify the `test` folder contains cram tests
+  against the binary executable named `calc`. Create a file `test/calc.t`
+  specifying that `calc -e '1+2'` prints 3 and returns successfully.
+* Delete file `dune`
+* Build, run tests and run `dune exec calc`
+
+Go `git cherry-pick task-2`
