@@ -2,8 +2,11 @@ let rec eval = function Ast.Int n -> n | Add (a, b) -> eval a + eval b
 let info = Cmdliner.Cmd.info "calc"
 
 let eval_lb lb =
-  let e = Parser.main Lexer.token lb in
-  Printf.printf "%d\n" (eval e)
+  try
+    let e = Parser.main Lexer.token lb in
+    Printf.printf "%d\n" (eval e)
+  with Parser.Error ->
+    Printf.printf "parse error near character %d" lb.lex_curr_pos
 
 let repl () =
   while true do
