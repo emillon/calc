@@ -1,6 +1,9 @@
 (library
  (name calc)
- (libraries cmdliner))
+ (libraries cmdliner)
+ (foreign_stubs
+  (language c)
+  (names calc_stubs)))
 
 (ocamllex lexer)
 
