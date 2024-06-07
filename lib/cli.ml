@@ -14,6 +14,8 @@ let eval_number_op f_int f_float va vb =
       let fb = as_float vb in
       VFloat (f_float fa fb)
 
+external log10_c : float -> float = "calc_log10"
+
 let rec eval = function
   | Ast.Int n -> VInt n
   | Float f -> VFloat f
@@ -23,6 +25,7 @@ let rec eval = function
   | Op (Mul, a, b) -> eval_number_op ( * ) ( *. ) (eval a) (eval b)
   | Op (Div, a, b) -> eval_number_op ( / ) ( /. ) (eval a) (eval b)
   | Call ("sin", e) -> VFloat (Stdlib.sin (as_float (eval e)))
+  | Call ("log10", e) -> VFloat (log10_c (as_float (eval e)))
   | Call _ -> failwith "unknown function"
 
 let info = Cmdliner.Cmd.info "calc"
