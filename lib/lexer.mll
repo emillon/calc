@@ -9,3 +9,4 @@ rule token = parse
     | '+' { Parser.Plus }
     | digit+ { Parser.Int (int_of_string (Lexing.lexeme lexbuf)) }
     | digit+ '.' digit+ { Parser.Float (float_of_string (Lexing.lexeme lexbuf)) }
+    | ['a'-'z']+ { Parser.Ident (Lexing.lexeme lexbuf) }

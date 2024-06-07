@@ -2,11 +2,13 @@ type value = VInt of int | VFloat of float
 
 let value_to_string = function
   | VInt n -> string_of_int n
-  | VFloat f -> string_of_float f
+  | VFloat f -> Printf.sprintf "%.6g" f
 
 let rec eval = function
   | Ast.Int n -> VInt n
   | Float f -> VFloat f
+  | Ident "pi" -> VFloat (2. *. Stdlib.acos 0.)
+  | Ident _ -> failwith "unknown ident"
   | Add (a, b) -> (
       match (eval a, eval b) with
       | VInt na, VInt nb -> VInt (na + nb)
