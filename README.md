@@ -5,7 +5,7 @@ This shows the following features:
 
 - [x] `(executable)`
 - [x] `(library)`
-- [ ] `(test)`
+- [x] `(test)`
 - [x] cram tests
 - [x] `(foreign_stubs)`
 - [x] ppx
