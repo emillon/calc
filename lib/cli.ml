@@ -1,10 +1,26 @@
-let rec eval = function Ast.Int n -> n | Add (a, b) -> eval a + eval b
+type value = VInt of int | VFloat of float
+
+let value_to_string = function
+  | VInt n -> string_of_int n
+  | VFloat f -> string_of_float f
+
+let rec eval = function
+  | Ast.Int n -> VInt n
+  | Float f -> VFloat f
+  | Add (a, b) -> (
+      match (eval a, eval b) with
+      | VInt na, VInt nb -> VInt (na + nb)
+      | VFloat fa, VFloat fb -> VFloat (fa +. fb)
+      | VInt na, VFloat fb -> VFloat (float na +. fb)
+      | VFloat fa, VInt nb -> VFloat (fa +. float nb))
+
 let info = Cmdliner.Cmd.info "calc"
 
 let eval_lb lb =
   try
-    let e = Parser.main Lexer.token lb in
-    Printf.printf "%d\n" (eval e)
+    let expr = Parser.main Lexer.token lb in
+    let v = eval expr in
+    Printf.printf "%s\n" (value_to_string v)
   with Parser.Error ->
     Printf.printf "parse error near character %d" lb.lex_curr_pos
 

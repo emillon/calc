@@ -3,3 +3,6 @@
 
   $ calc -e '1+'
   parse error near character 2
+
+  $ calc -e '1+2.5'
+  3.5
