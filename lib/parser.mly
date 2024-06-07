@@ -4,10 +4,12 @@
 %token<string> Ident;
 %token Plus
 %token Star
+%token Slash
+%token Lpar Rpar
 %start<Ast.exp> main;
 
 %left Plus
-%left Star
+%left Star Slash
 
 %{ open Ast %}
 
@@ -21,5 +23,7 @@ expr:
 | Ident { Ident $1 }
 | expr Plus expr { Op (Add, $1, $3) }
 | expr Star expr { Op (Mul, $1, $3) }
+| expr Slash expr { Op (Div, $1, $3) }
+| Ident Lpar expr Rpar { Call ($1, $3) }
 
 %%
