@@ -5,7 +5,7 @@ let test_as_float =
     ( Printf.sprintf "as_float(%s)" name,
       `Quick,
       fun () ->
-        let got = Cli.as_float expression in
+        let got = Eval.as_float expression in
         Alcotest.check
           (Alcotest.float Stdlib.epsilon_float)
           __LOC__ expected got )
