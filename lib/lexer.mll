@@ -7,6 +7,7 @@ rule token = parse
     | space { token lexbuf }
     | '\n' { Parser.Eof }
     | '+' { Parser.Plus }
+    | '*' { Parser.Star }
     | digit+ { Parser.Int (int_of_string (Lexing.lexeme lexbuf)) }
     | digit+ '.' digit+ { Parser.Float (float_of_string (Lexing.lexeme lexbuf)) }
     | ['a'-'z']+ { Parser.Ident (Lexing.lexeme lexbuf) }

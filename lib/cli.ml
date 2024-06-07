@@ -4,17 +4,20 @@ let value_to_string = function
   | VInt n -> string_of_int n
   | VFloat f -> Printf.sprintf "%.6g" f
 
+let eval_number_op f_int f_float va vb =
+  match (va, vb) with
+  | VInt na, VInt nb -> VInt (f_int na nb)
+  | VFloat fa, VFloat fb -> VFloat (f_float fa fb)
+  | VInt na, VFloat fb -> VFloat (f_float (float_of_int na) fb)
+  | VFloat fa, VInt nb -> VFloat (f_float fa (float_of_int nb))
+
 let rec eval = function
   | Ast.Int n -> VInt n
   | Float f -> VFloat f
   | Ident "pi" -> VFloat (2. *. Stdlib.acos 0.)
   | Ident _ -> failwith "unknown ident"
-  | Add (a, b) -> (
-      match (eval a, eval b) with
-      | VInt na, VInt nb -> VInt (na + nb)
-      | VFloat fa, VFloat fb -> VFloat (fa +. fb)
-      | VInt na, VFloat fb -> VFloat (float na +. fb)
-      | VFloat fa, VInt nb -> VFloat (fa +. float nb))
+  | Op (Add, a, b) -> eval_number_op ( + ) ( +. ) (eval a) (eval b)
+  | Op (Mul, a, b) -> eval_number_op ( * ) ( *. ) (eval a) (eval b)
 
 let info = Cmdliner.Cmd.info "calc"
 

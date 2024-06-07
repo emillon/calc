@@ -1,1 +1,7 @@
-type exp = Int of int | Add of exp * exp | Float of float | Ident of string
+type op = Add | Mul
+
+type exp =
+  | Int of int
+  | Float of float
+  | Ident of string
+  | Op of op * exp * exp
