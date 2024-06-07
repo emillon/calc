@@ -1,6 +1,7 @@
 (library
  (name calc)
  (libraries cmdliner)
+ (preprocess (pps ppx_deriving.show))
  (foreign_stubs
   (language c)
   (names calc_stubs)))

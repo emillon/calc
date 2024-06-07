@@ -18,3 +18,10 @@
 
   $ calc -e 'log10 (123456)'
   5.09151
+
+  $ calc --debug-ast -e '2 * sin (pi / 2)'
+  2
+  [debug] (Ast.Op (Ast.Mul, (Ast.Int 2),
+             (Ast.Call ("sin",
+                (Ast.Op (Ast.Div, (Ast.Ident "pi"), (Ast.Int 2)))))
+             ))
