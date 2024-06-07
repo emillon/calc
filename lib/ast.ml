@@ -1,8 +1,9 @@
-type op = Add | Mul | Div
+type op = Add | Mul | Div [@@deriving show]
 
-type exp =
+type expr =
   | Int of int
   | Float of float
   | Ident of string
-  | Op of op * exp * exp
-  | Call of string * exp
+  | Op of op * expr * expr
+  | Call of string * expr
+[@@deriving show]

@@ -17,7 +17,7 @@
           version = "n/a";
           src = ./.;
           nativeBuildInputs = with pkgs.ocamlPackages; [ menhir ];
-          buildInputs = with pkgs.ocamlPackages; [ cmdliner ];
+          buildInputs = with pkgs.ocamlPackages; [ cmdliner ppx_deriving ppxlib ];
         };
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];

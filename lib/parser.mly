@@ -6,7 +6,7 @@
 %token Star
 %token Slash
 %token Lpar Rpar
-%start<Ast.exp> main;
+%start<expr> main;
 
 %left Plus
 %left Star Slash
