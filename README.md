@@ -62,3 +62,11 @@ Next, go `git cherry-pick task-1`
 * Build, run tests and run `dune exec calc`
 
 Go `git cherry-pick task-2`
+
+## Task #2: Display Errors
+
+* Handle parsing errors `Parser.Error` in `lib/cli.ml`
+* Add a test in `test/calc.t` showing that `calc -e '1+'` prints a parsing error
+  message
+
+Go `git cherry-pick task-3`
