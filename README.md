@@ -145,3 +145,7 @@ Go `git cherry-pick task-9`
 
 Go `git cherry-pick task-10`
 
+## Task #10: Eval module
+
+* Refactor the code to isolate abstract syntax tree evaluation into a dedicated
+  module.
