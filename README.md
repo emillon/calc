@@ -133,3 +133,15 @@ Go `git cherry-pick task-8`
 * Add a cram test case on `calc --debug-ast -e '2 * sin (pi / 2)`
 
 Go `git cherry-pick task-9`
+
+## Task #9: Unit Tests
+
+* Move the contents of the folder `test` into a fresh folder `test/cram`
+* Create a folder `test/unit`
+* Create a file `test/unit/dune` with test stanza and dependency `alcotest`
+* Create a file `test/unit/test_calc.ml` that checks abstract syntax tree
+  evaluation. The expressions containing the constants `2` (integer) and `3.5`
+  (float) shall return 2.0 and 3.5, respectively
+
+Go `git cherry-pick task-10`
+
