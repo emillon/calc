@@ -97,3 +97,13 @@ Go `git cherry-pick task-5`
 * Add a test `test/calc.t` showing that `calc -e '1+2*3'` prints `7`
 
 Go `git cherry-pick task-6`
+
+## Task #6: Sinus and Division
+
+* Add support for division and named function call in `Ast.t`
+* Add lexing and parsing support for division and function calls
+* Update evaluation, handle division and function calls hard-code _sin_ as
+  a predefined function name
+* Add a test `test/calc.t` showing that `calc -e 'sin(pi/6)'` prints `0.5`
+
+Go `git cherry-pick task-7`
