@@ -107,3 +107,18 @@ Go `git cherry-pick task-6`
 * Add a test `test/calc.t` showing that `calc -e 'sin(pi/6)'` prints `0.5`
 
 Go `git cherry-pick task-7`
+
+## Task #7: Log10 in C
+
+* Create a file `lib/calc_stubs.c` which contains a function `calc_log10` that
+  takes an OCaml `value`, converts it into a C `double`, and calls `log10` from
+  `math.h`. Eventually, makes a copy and returns it to OCaml.
+* Update `Cli` to expose `log10` (from `calc_stubs.c`) in OCaml and evaluate
+  function calls to `log10` using that function
+* Add stanza `foreign_subs` in `lib/dune` to compile `lib/calc_stubs.c` and link
+  it into the library `Calc`
+* Extend lexing and parsing to support function names with digits
+* Add a test `test/calc.t` showing that `calc -e 'log10 (123456)'` prints `5.09151`
+
+Go `git cherry-pick task-8`
+
