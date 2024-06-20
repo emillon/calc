@@ -79,3 +79,13 @@ Go `git cherry-pick task-3`
 * Add a test in `test/calc.t` showing that `calc -e '1+2.5'` prints `3.5`
 
 Go `git cherry-pick task-4`
+
+## Task #4: Pi
+
+* Add a constructor for named constants in `Ast.t`
+* Add lexing and parsing support for symbolic constant `pi`
+* Update evaluation, hard code the value of _&pi;_
+* Add a test `test/calc.t` showing that `calc -e '1+pi'` prints `3.14159`
+
+Go `git cherry-pick task-5`
+
