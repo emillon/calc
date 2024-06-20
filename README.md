@@ -89,3 +89,11 @@ Go `git cherry-pick task-4`
 
 Go `git cherry-pick task-5`
 
+## Task #5: Multiplication
+
+* Add support for multiplication in `Ast.t`
+* Add lexing and parsing support for multiplication
+* Update evaluation, handle multiplication
+* Add a test `test/calc.t` showing that `calc -e '1+2*3'` prints `7`
+
+Go `git cherry-pick task-6`
