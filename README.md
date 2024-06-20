@@ -70,3 +70,12 @@ Go `git cherry-pick task-2`
   message
 
 Go `git cherry-pick task-3`
+
+## Task #3: Add Floats
+
+* Add a constructor for floats in `Ast.t`
+* Add lexing and parsing support for float
+* Update evaluation, with support for implicit coercion from integers to floats
+* Add a test in `test/calc.t` showing that `calc -e '1+2.5'` prints `3.5`
+
+Go `git cherry-pick task-4`
