@@ -9,15 +9,16 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+        ocamlPackages = pkgs.ocaml-ng.ocamlPackages_4_14;
       in
       {
         formatter = pkgs.nixpkgs-fmt;
-        packages.default = pkgs.ocamlPackages.buildDunePackage {
+        packages.default = ocamlPackages.buildDunePackage {
           pname = "calc";
           version = "n/a";
           src = ./.;
-          nativeBuildInputs = with pkgs.ocamlPackages; [ menhir ];
-          buildInputs = with pkgs.ocamlPackages; [
+          nativeBuildInputs = with ocamlPackages; [ menhir ];
+          buildInputs = with ocamlPackages; [
             alcotest
             cmdliner
             ppx_deriving
@@ -26,7 +27,7 @@
         };
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self.packages.${system}.default ];
-          nativeBuildInputs = with pkgs.ocamlPackages; [
+          nativeBuildInputs = with ocamlPackages; [
             merlin
             ocamlformat_0_26_1
           ];
